@@ -1,12 +1,12 @@
 ﻿
 
 
-define estagiaria = Character("Beatriz")
-define civil = Character("Civil", color="#9a9b9d")
-define fiscal = Character("Dep. de Justiça Fiscal", color="#f7e26c")
-define analista = Character("Jonas", color="#21cf32")
+define e = Character("Beatriz") # ESTAGIÁRIA 
+define c = Character("Civil", color="#9a9b9d") # CIVIL
+define f = Character("Dep. de Justiça Fiscal", color="#f7e26c") # FISCAL
+define a = Character("Jonas", color="#21cf32") # ANALISTA
 # Definindo Blackgrand
-image bg_street = "img_1"
+image bg_street = "img_1.jfif"
 # The game starts here.
 
 label start:
@@ -18,25 +18,49 @@ label start:
 
     "Uma ligação é feito no departamento de justiça fiscal na Receita federal"
 
-    civil "Olá, gostaria de fazer uma denúncia sobre uma loja de importados que está vendendo produtos sem licença."
+    c "Olá, gostaria de fazer uma denúncia sobre uma loja de importados que está vendendo produtos falsificados."
 
-    fiscal "Entendo. Vamos investigar essa situação. Me diga mais sobre a loja e os produtos que estão sendo vendidos."
+    f "Entendo. Vamos investigar essa situação. Me diga mais sobre a loja e os produtos que estão sendo vendidos."
 
-    civil "A loja se chama 'Cell Importados' e eles estão vendendo celulares e acessórios sem a devida autorização. Eu tenho algumas evidências que posso fornecer..."
+    c "A loja se chama 'Cell Importados' e eles estão vendendo celulares e acessórios sem comprovação de origem. Eu tenho algumas evidências que posso fornecer..."
 
-    fiscal "Perfeito. Por favor, envie as evidências para que possamos analisar e tomar as medidas necessárias."
+    f "Perfeito. Por favor, envie as evidências para que possamos analisar e tomar as medidas necessárias."
 
     # Agora, a estagiária Beatriz entra em cena
     #scene do escritorio da Receita Federal
 
-    f"Hoje é o primeiro dia de {estagiaria} como estagiária na Receita Federal. Ela está animada para começar a trabalhar e aprender mais sobre o processo de fiscalização."
+    "Hoje é o primeiro dia da Beatriz como estagiária na Receita Federal. Ela está animada para começar a trabalhar e aprender mais sobre o processo de fiscalização."
     
-    show estagiaria happy
+    show a
     
-    analista "Bem-vinda à equipe, Beatriz! Como estagiária da Receita Federal, seu primeiro caso envolve a loja 'Cell Importados'."
+    a "Bem-vinda à equipe, Breatriz! Estou feliz em tê-la conosco. Como estagiária, você terá a oportunidade de aprender sobre o processo de fiscalização e ajudar a garantir que as leis sejam cumpridas."
 
-    estagiaria "Obrigada! Estou pronta para ajudar no que for necessário. O que devo fazer primeiro?"
-    
-    analista "Otimo! Primeiro, precisamos analisar as evidências fornecidas pelo denunciante. Depois, você precisará visitar a loja para verificar se eles estão realmente vendendo produtos sem licença."
+    show e happy
+
+    e "Obrigada! Estou pronta para ajudar no que for necessário."
+
+    show a
+
+    a "Otimo! a Receita Federal acabou de deflagrar uma operação no Centro de Fortaleza!"
+
+    a "Essa operação visa apreender produtos falsificados e de descaminho, sem comprovação de origem, somando cerca de aproximadamente R$ 2 milhões em produtos irregulares."
+
+    show e
+
+    e "R$ 2 milhões em produtos à margem dos órgãos reguladores... Isso afeta diretamente a arrecadação e a economia do Ceará, né?
+
+    show a
+
+    a "Exatamente. Além da sonegação de tributos federais e do ICMS que destina recursos financeiros a outros setores como saúde e educação,por exemplo. Esses produtos falsificados e de descaminho geram concorrência desleal contra o lojista honesto e trazem riscos reais segurança do consumidor."
+
+    a "Há bastante evidências que no Centro de Fortaleza é comum encontrar produtos falsificados e de descaminho, e precisamos da sua ajuda para identificar esses produtos e garantir que eles sejam devidamente apreendidos."
+
+    a "Nossa missão de campo hoje é analisar uma das lojas-alvo dessa operação no Centro, a Cell Importados"
+
+    show e
+
+    e "Nossa, estou muito animada!"
+
+
 
     return
