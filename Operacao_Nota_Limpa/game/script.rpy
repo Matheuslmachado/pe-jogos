@@ -9,6 +9,9 @@ define a = Character("Jonas", color="#21cf32") # ANALISTA
 # Definindo Blackgrand
 image bg_call = "scene_1.png"
 image bg_office = "scene_.png"
+image bg_street = "img_4.png"
+image bg_store = "img_1.jpg"
+image bg_store2 = "img_5.png"
 # The game starts here.
 
 label start:
@@ -61,7 +64,9 @@ label receitaFederal:
     show a
     with dissolve
 
-    a "Exatamente. Além da sonegação de tributos federais e do ICMS que destina recursos financeiros a outros setores como saúde e educação,por exemplo. Esses produtos falsificados e de descaminho geram concorrência desleal contra o lojista honesto e trazem riscos reais segurança do consumidor."
+    a "Exatamente. Além da sonegação de tributos federais e do ICMS que destina recursos financeiros a outros setores como saúde e educação,por exemplo. "
+    
+    a "Esses produtos falsificados e de descaminho geram concorrência desleal contra o lojista honesto e trazem riscos reais segurança do consumidor."
 
     a "Há bastante evidências que no Centro de Fortaleza é comum encontrar produtos falsificados e de descaminho, e precisamos da sua ajuda para identificar esses produtos e garantir que eles sejam devidamente apreendidos."
 
@@ -72,6 +77,21 @@ label receitaFederal:
 
     e "Nossa, estou muito animada!"
 
+    jump OperacaoCentro
 
+label OperacaoCentro:
 
+    scene bg_street
+
+    "Você chega a um estabelecimento comercial no Centro de Fortaleza acompanhado pela equipe de fiscalização"
+
+    "As prateleiras estão abarrotadas de eletrônicos importados com preços muito abaixo do mercado, mas sem nenhuma nota fiscal de importação ou selo de regularidade."
+
+    scene bg_store2
+
+    l "Olá, posso ajudar"
+
+    l "Espera aí! o que significa isso? Meus produtos vêm de fora, mas todo mundo assim no Centro! Por que essa fiscalização toda em cima de mim?"
+    
+    
     return
