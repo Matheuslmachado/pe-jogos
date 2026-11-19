@@ -1,20 +1,26 @@
-﻿# Define characters
+﻿
+# Define characters
+# ESTAGIÁRIA
+define e = Character("Beatriz", color="#2b5b84")
+# CIVIL
+define c = Character("Civil", color="#10a562")
+# DEPARTAMENTO DA RECEITA FEDERAL
+define f = Character("Dep. de Justiça Fiscal", color="#130c9e")
+# ANALISTA
+define a = Character("Jonas", color="#21cf32")
+# LOJISTA
+define l = Character("Lojista", color="#c21515")
 
-define e = Character("Beatriz") # ESTAGIÁRIA 
-define c = Character("Civil", color="#9a9b9d") # CIVIL
-define f = Character("Dep. de Justiça Fiscal", color="#f7e26c") # FISCAL
-define a = Character("Jonas", color="#21cf32") # ANALISTA
-define l = Character("Logista", color="#f7e26c") # LOJA
-
-# Definindo imagens
+# Definindo imagens e backgrounds
 image bg_call = "scene_1.png"
-image bg_office = "scene_2.png"
+image bg_office = "img_2.png"
 image bg_office2 = "img_6.png"
 image bg_street = "img_4.png"
 image bg_store = "img_1.jpg"
 image bg_store2 = "img_5.png"
 image bg_store3 = "scene_7.png"
 image bg_product = "scene_.png"
+image beatriz = "beatriz.png"
 
 # Definindo variáveis de investigacao
 default provas_apreendidas = 0
@@ -23,294 +29,294 @@ default indicios_encontrados = 0
 default selo_verificado = False
 default rotulo_verificado = False
 default nf_verificada = False
+default valor_apreensao_milhoes = 2
+default tributos_estimados = 0
 
-# The game starts here.
-
+# O jogo começa aqui
 label start:
 
     play music "call.mp3" fadein 1.0
-
-    $ valor_apreensao_milhoes = 2 
-
     scene bg_call
-
-    # Inicio da história
-
-    "Uma ligação é feito no departamento de justiça fiscal na Receita federal"
-
-    show c at left
     with dissolve
 
-    c "Olá, gostaria de fazer uma denúncia sobre uma loja de importados que está vendendo produtos falsificados."
-    
-    show f at right
-    with dissolve
+    "Uma ligação chega ao plantão de fiscalização e cidadania fiscal da Receita Federal."
 
-    f "Entendo. Vamos investigar essa situação. Me diga mais sobre a loja e os produtos que estão sendo vendidos."
+    c "Olá, quero fazer uma denúncia sobre uma loja de importados que vende eletrônicos sem procedência e com cara de falsificação."
 
-    show c at left
-    with dissolve
 
-    c "A loja se chama 'Cell Importados' e eles estão vendendo celulares e acessórios sem comprovação de origem. Eu tenho algumas evidências que posso fornecer..."
+    f "Entendido. Vamos apurar o caso. Que loja é e o que estão vendendo?"
 
-    show f at right
-    with dissolve
 
-    f "Perfeito. Por favor, envie as evidências para que possamos analisar e tomar as medidas necessárias."
+    c "É a 'Cell Importados'. Vendem celulares e acessórios bem abaixo do preço, sem nota fiscal nem comprovação de origem. Tenho registros que posso mandar."
+
+
+    f "Ótimo. Envie o que você reuniu para a equipe analisar e direcionar a fiscalização."
 
     stop music fadeout 1.0
 
     menu:
-        "Receber as evidências":
-            f "Obrigado por enviar as evidências. Vamos analisá-las e tomar as medidas necessárias para garantir que a loja esteja em conformidade com as leis e regulamentos."
+        "Receber e registrar as provas iniciais":
+            $ provas_apreendidas += 1
+            $ consciencia_publico += 1
+            f "Provas recebidas e anexadas ao caso. Isso ajuda a direcionar a verificação em campo."
             jump receitaFederal
-        "Não receber as evidências":
-            f "Entendo. Sem as evidências, será mais difícil para nós investigarmos a situação. No entanto, ainda podemos tomar medidas com base nas informações fornecidas."
-            jump start
+
+        "Seguir só com o relato e abrir triagem":
+            f "Certo. Sem o material prévio a apuração exige mais atenção em campo, mas vamos registrar a denúncia para triagem."
+            jump receitaFederal
+
+
 label receitaFederal:
 
     play music "office.mp3" fadein 1.0
-    #scene do escritorio da Receita Federal
     scene bg_office
-
-    "Hoje é o primeiro dia da Beatriz como estagiária na Receita Federal. Ela está animada para começar a trabalhar e aprender mais sobre o processo de fiscalização."
-    
-    # hide <image> with dissolve
-    show a at left
-    with dissolve
-    
-    a "Bem-vinda à equipe, Breatriz! Estou feliz em tê-la conosco. Como estagiária, você terá a oportunidade de aprender sobre o processo de fiscalização e ajudar a garantir que as leis sejam cumpridas."
-
-    # hide <image> with dissolve
-    show e at right
     with dissolve
 
-    e "Obrigada! Estou pronta para ajudar no que for necessário."
+    "Primeiro dia da Beatriz como estagiária na Receita Federal, em parceria com as ações de cidadania fiscal."
 
-    # hide <image> with dissolve
-    show a at left
+    a "Bem-vinda à equipe, Beatriz! Aqui você vai ver na prática como a fiscalização protege o consumidor e os recursos públicos."
+
+    show beatriz at right
     with dissolve
+    e "Obrigada, Jonas! Tô pronta para acompanhar e aprender."
 
-    a "Otimo! a Receita Federal acabou de deflagrar uma operação no Centro de Fortaleza!"
+    a "Chegou uma operação no Centro de Fortaleza: cerca de R$ [valor_apreensao_milhoes] milhões em mercadorias com indícios de falsificação e descaminho."
 
-    a "Essa operação visa apreender produtos falsificados e de descaminho, sem comprovação de origem, somando cerca de aproximadamente R$ [valor_apreensao_milhoes] milhões em produtos irregulares."
-
-    # hide <image> with dissolve
-    show e at right
+    show beatriz at right
     with dissolve
+    e "R$ [valor_apreensao_milhoes] milhões sem controle... Isso tira dinheiro de imposto que voltaria pra cidade, né?"
 
-    e "R$ [valor_apreensao_milhoes] milhões em produtos à margem dos órgãos reguladores... Isso afeta diretamente a arrecadação e a economia do Ceará, né?"
+    a "Isso mesmo. Quando entram tributos federais e ICMS fora da lei, faltam recursos para saúde, educação e serviços básicos."
+    a "Além disso, quem vende produto irregular sem imposto concorre de forma desleal com o lojista correto e pode colocar a segurança de quem compra em risco."
+    a "Hoje vamos averiguar a Cell Importados, no Centro."
 
-    # hide <image> with dissolve
-    show a at left
+    show beatriz at right
     with dissolve
-
-    a "Exatamente. Além da sonegação de tributos federais e do ICMS que destina recursos financeiros a outros setores como saúde e educação,por exemplo. "
-    
-    a "Esses produtos falsificados e de descaminho geram concorrência desleal contra o lojista honesto e trazem riscos reais segurança do consumidor."
-
-    a "Há bastante evidências que no Centro de Fortaleza é comum encontrar produtos falsificados e de descaminho, e precisamos da sua ajuda para identificar esses produtos e garantir que eles sejam devidamente apreendidos."
-
-    a "Nossa missão de campo hoje é analisar uma das lojas-alvo dessa operação no Centro, a Cell Importados"
-
-    # hide <image> with dissolve
-    show e at right
-    with dissolve
-
-    e "Nossa, estou muito animada!"
+    e "Partiu! Quero ver como isso funciona na prática."
 
     menu:
-        "Aceitar a missão e começar a agir!":
-
-            show e at right
+        "Ir direto para a operação no Centro":
+            $ consciencia_publico += 1
+            show beatriz at right
             with dissolve
-
-            e "Estou pronta para ajudar na fiscalização e garantir que os produtos irregulares sejam devidamente apreendidos."
-
+            e "Vamos nessa! Quero acompanhar a inspeção de perto."
             jump OperacaoCentro
 
-        "Entender mais sobre as irregularidades antes de agir":
+        "Pedir um resumo rápido antes de sair":
+            a "Resumo rápido: falsificação é copiar marca ou produto ilegalmente, violando direitos e enganando o cliente."
+            a "Descaminho é trazer mercadoria estrangeira sem pagar os impostos devidos na entrada. Nos dois casos, há perda fiscal e risco ao consumidor."
 
-            show a at left
+            show beatriz at right
             with dissolve
-
-            a "Claro! A missão de campo é uma oportunidade para você aprender mais sobre o processo de fiscalização e ajudar a garantir que as leis sejam cumpridas. Você terá a chance de analisar os produtos vendidos na loja e identificar aqueles que estão em desacordo com as normas e regulamentos."
-
-            a "Além disso, você também terá a oportunidade de interagir com os lojistas e explicar a importância da conformidade com as leis e regulamentos. É uma experiência valiosa que irá ajudá-la a desenvolver suas habilidades profissionais e contribuir para o bem-estar da sociedade."
-
-            show e at right
-            with dissolve
-
-            e "Entendi! Agora estou pronta para ajudar na fiscalização e garantir que os produtos irregulares sejam devidamente apreendidos."
-            
+            e "Fechado! Agora ficou bem claro o que observar."
             jump OperacaoCentro
 
-    
 
 label OperacaoCentro:
 
     scene bg_street
+    with dissolve
 
-    "Você chega ao Centro de Fortaleza, onde a operação de fiscalização está sendo realizada. A equipe de fiscalização está pronta para começar a inspeção das lojas e identificar produtos irregulares."
-    
-    "A operação é liderada por um analista da Receita Federal, que explica a importância da conformidade com as leis e regulamentos e orienta a equipe sobre como identificar produtos irregulares."
+    "A equipe chega ao Centro de Fortaleza. O movimento é intenso e o analista Jonas alinha os critérios da vistoria."
 
     scene bg_store
-
+    with dissolve
     play music "suspense.mp3" fadein 1.0
 
-    "Você chega a um estabelecimento comercial no Centro de Fortaleza acompanhado pela equipe de fiscalização"
-
-    "As prateleiras estão abarrotadas de eletrônicos importados com preços muito abaixo do mercado, e precisa identificar se há algum produtos com nota fiscal de importação ou selo de regularidade."
+    "Na Cell Importados, há carregadores, fones e acessórios com preços bem baixos, sem nota visível nem selo de certificação."
 
     menu:
-        "Avançar e Investigar a loja e identificar produtos irregulares":
+        "Ir direto inspecionar os produtos":
             jump Investigacao
-        "Conversar com o lojista e explicar a importância da conformidade com as leis e regulamentos":
+
+        "Conversar primeiro com o lojista":
             jump ConversaLojista
+
 
 label Investigacao:
 
-    scene bg_store
+    scene bg_store3
+    with dissolve
 
-    "Você começa a investigar a loja e identificar produtos irregulares. A equipe de fiscalização está pronta para ajudá-la a analisar os produtos e identificar aqueles que estão em desacordo com as normas e regulamentos."
+    a "Antes de sair recolhendo qualquer coisa, a regra é checar indícios objetivos: nota ou declaração de importação, selos de segurança e qualidade da embalagem."
 
-    # Explicação sobre como identificar produtos irregulares
+    show beatriz at right
+    with dissolve
+    e "Se faltar documento de entrada, pode ser descaminho. Se tiver marca falsa ou falha grave de segurança, também é irregularidade."
 
-    "Para identificar produtos irregulares, você deve verificar se eles possuem documentação adequada, como nota fiscal de importação e selo de regularidade."
+    a "Exato. Pegue um item da vitrine e faça a conferência passo a passo."
 
-    "Além disso, você deve verificar se os produtos estão em conformidade com as normas e regulamentos aplicáveis, como requisitos de segurança e qualidade."
+    hide beatriz
+    with dissolve
 
-    "Sobre produtos falsificados, você deve verificar se eles possuem marcas registradas e se estão em conformidade com as leis de propriedade intelectual."
-
-    "Se você identificar produtos irregulares, deve registrá-los e encaminhá-los para apreensão pela equipe de fiscalização."
-
-    "Sobre descaminho, você deve verificar se os produtos foram introduzidos no país sem o recolhimento dos tributos aduaneiros devidos."
-
-    "Você consegue identificar produtos de descaminho verificando se eles possuem nota fiscal de importação ou declaração de importação."
-
-    "Beatriz começa a analisar os produtos atraves de uma lista de verificação fornecida pela equipe de fiscalização. Ela verifica a documentação dos produtos e identifica aqueles que estão em desacordo com as normas e regulamentos."
-    
     jump inspecionarProduto
-        
-        
+
+
+label ConversaLojista:
+
+    scene bg_store2
+    with dissolve
+    $ consciencia_publico += 1
+
+    
+    l "E aí, tudo certo? Posso ajudar?"
+
+    a "Bom dia. Estamos fazendo uma verificação de regularidade fiscal e de produtos. Mercadoria sem nota de importação ou sem selo pode configurar descaminho ou falsificação."
+    a "Isso prejudica quem paga imposto direitinho, reduz verba pública de áreas como saúde e educação e pode trazer risco pra quem usa."
+
+    l "Ah, mas todo mundo vende assim aqui no Centro, o preço fica mais em conta..."
+
+    a "Preço baixo sem origem legal costuma ter um custo escondido pra cidade e pro consumidor. Vamos conferir os itens expostos agora."
+
+
+    jump inspecionarProduto
+
+
 # ==============================================================================
 # LABEL: INSPEÇÃO TÉCNICA DE FALSIFICAÇÃO E DESCAMINHO
 # ==============================================================================
 label inspecionarProduto:
 
     scene bg_store3
-    show e at left
+    with dissolve
+    show beatriz at left
+    with dissolve
 
-    "Você pega uma caixa de carregador turbo e fone sem fio expostos na vitrine por um terço do preço oficial."
-    
-    a "Beatriz, antes de lavrar o auto, precisamos comprovar tecnicamente se há indícios de falsificação ou descaminho. Examine o item com atenção."
+    "Você pega uma caixa de carregador turbo e fone sem fio na vitrine por um terço do preço de loja oficial."
 
-    # Loop de inspeção: o jogador precisa checar pelo menos 2 critérios para concluir
-    label menu_inspecao:
-        menu:
-            "1. Verificar Selo de Homologação (Anatel / Inmetro)" if not selo_verificado:
-                $ selo_verificado = True
-                $ indicios_encontrados += 1
-                e "Olhando a parte traseira... Não há selo da Anatel nem certificação do Inmetro!"
-                a "Exato! Produtos eletrônicos sem homologação não passaram por testes de segurança elétrica e oferecem risco de curto-circuito ou explosão ao consumidor."
-                jump menu_inspecao
+    a "Beatriz, para sustentar qualquer medida, precisamos levantar indícios concretos no item. O que você vai checar?"
 
-            "2. Analisar Acabamento, Ortografia e Código de Barras" if not rotulo_verificado:
-                $ rotulo_verificado = True
-                $ indicios_encontrados += 1
-                e "A impressão da marca está borrada, o manual tem erros grosseiros de português e o código de barras não bate com o fabricante oficial."
-                a "Indício clássico de contrafação (falsificação). Além de enganar o consumidor, isso viola propriedade intelectual e gera concorrência desleal."
-                jump menu_inspecao
+    jump menu_inspecao
 
-            "3. Exigir Nota Fiscal de Entrada / Declaração de Importação" if not nf_verificada:
-                $ nf_verificada = True
-                $ indicios_encontrados += 1
-                e "Sr. Lojista, cadê a Nota Fiscal de compra deste lote ou a Declaração de Importação?"
-                l "Ah... comprei direto de um fornecedor sem nota mesmo, pra sair mais barato."
-                a "Caracterizado o descaminho! Mercadoria estrangeira introduzida no país sem o recolhimento dos tributos aduaneiros devidos."
-                jump menu_inspecao
 
-            "Concluir Laudo Pericial" if indicios_encontrados >= 2:
-                jump resultado_inspecao
+label menu_inspecao:
 
-            "Concluir Laudo Pericial (Precisa investigar mais)" if indicios_encontrados < 2:
-                a "Calma, Beatriz! Você ainda não coletou indícios técnicos suficientes para sustentar uma apreensão legal. Examine mais detalhes do produto."
-                jump menu_inspecao
+    menu:
+        "1. Verificar Selo de Homologação (Anatel / Inmetro)" if not selo_verificado:
+            $ selo_verificado = True
+            $ indicios_encontrados += 1
+            show beatriz at left
+            with dissolve
+            e "Olhando atrás da caixa... Não tem selo da Anatel nem do Inmetro."
+            
+            a "Sem certificação, o carregador não passou por teste de segurança. Pode superaquecer, dar curto ou estragar o aparelho."
+            jump menu_inspecao
+
+        "2. Analisar Acabamento, Ortografia e Código de Barras" if not rotulo_verificado:
+            $ rotulo_verificado = True
+            $ indicios_encontrados += 1
+            show beatriz at left
+            with dissolve
+            e "A impressão tá borrada, o manual tem vários erros de português e o código de barras não confere."
+            
+            a "Forte indício de falsificação. Além de enganar quem compra, derruba a concorrência justa com quem trabalha legalizado."
+            jump menu_inspecao
+
+        "3. Cobrar Nota Fiscal de Entrada / Declaração de Importação" if not nf_verificada:
+            $ nf_verificada = True
+            $ indicios_encontrados += 1
+            show beatriz at left
+            with dissolve
+            e "Tem nota fiscal de compra desse lote ou declaração de importação?"
+            
+            l "Pior que não... peguei direto num fornecedor sem nota pra baratear."
+            
+            a "Aí entra o descaminho: produto estrangeiro sem comprovação fiscal e sem o recolhimento devido dos tributos."
+            jump menu_inspecao
+
+        "Concluir verificação técnica" if indicios_encontrados >= 2:
+            jump resultado_inspecao
+
+        "Concluir verificação técnica (Ainda faltam indícios)" if indicios_encontrados < 2:
+
+            a "Ainda tá cedo pra fechar a análise, Beatriz. Checa mais algum ponto da embalagem ou da documentação."
+            jump menu_inspecao
+
 
 label resultado_inspecao:
 
     $ provas_apreendidas += indicios_encontrados
-    
+
     if indicios_encontrados == 3:
         $ consciencia_publico += 2
-        e "Laudo completo! Comprovei falta de homologação (risco à saúde), indícios claros de falsificação e ausência de nota de importação (descaminho)."
-        a "Perícia impecável, Beatriz! Esse relatório garante a apreensão legal do lote e protege tanto o consumidor quanto a arrecadação pública."
+        show beatriz at left
+        with dissolve
+        e "Fechei os três pontos: sem selo de segurança, sinais de falsificação e sem nota ou declaração de importação."
+        
+        a "Ótima checagem, Beatriz. Com indícios claros e documentados, a base técnica fica bem mais sólida."
     else:
         $ consciencia_publico += 1
-        e "Consegui reunir [indicios_encontrados] indícios técnicos suficientes para comprovar a irregularidade do produto."
-        a "Bom trabalho! Sempre que possível, verifique todos os pontos para deixar o auto de infração ainda mais sólido."
-
-    jump analise_tecnica        
+        show beatriz at left
+        with dissolve
+        e "Reuni [indicios_encontrados] indícios técnicos sobre a irregularidade do produto."
         
-          
-label ConversaLojista:
+        a "Bom avanço. Quanto mais critérios conferidos com precisão, mais consistente fica a análise."
 
-    scene bg_store2
+    jump analise_tecnica
 
-    show l at left
-    with dissolve
-
-    l "Olá, posso ajudar"
-
-    #l "Espera aí! o que significa isso? Meus produtos vêm de fora, mas todo mundo assim no Centro! Por que essa fiscalização toda em cima de mim?"
-    
-    a "Sr. Lojista, estamos aqui para garantir que todos os produtos vendidos estejam em conformidade com as leis e regulamentos. Produtos sem nota fiscal de importação ou selo de regularidade podem ser falsificados ou de descaminho, o que representa riscos para o consumidor e prejudica a arrecadação pública."
-
-    a "A conformidade com as leis e regulamentos é essencial para garantir a segurança do consumidor e a arrecadação de tributos, que são utilizados em serviços públicos essenciais como saúde e educação."
-
-    a "Além disso, a venda de produtos falsificados ou de descaminho gera concorrência desleal contra lojistas que cumprem a lei, prejudicando o comércio local e a economia como um todo."
-
-    a "Entretanto, viemos analizar os produtos expostos na loja e identificar aqueles que estão em desacordo com as normas e regulamentos. Se encontrarmos produtos irregulares, eles serão apreendidos e você poderá ser responsabilizado legalmente."
-
-    jump inspecionarProduto
 
 label analise_tecnica:
 
-    scene bg_store
+    scene bg_store2
+    with dissolve
 
-    "Após a inspeção técnica, você conclui que os produtos analisados apresentam indícios de irregularidades."
+    "Com os registros da inspeção em mãos, a equipe avalia o enquadramento do material encontrado."
 
     if indicios_encontrados >= 2:
-
         scene bg_product
-
-        "Com base nos indícios encontrados, a equipe de fiscalização decide apreender os produtos irregulares e lavrar o auto de infração."
-        
-        "O lojista é informado sobre a apreensão e as consequências legais de vender produtos falsificados ou de descaminho."
-
+        with dissolve
+        "Há indícios consistentes de irregularidade nos itens analisados. A equipe formaliza a apreensão dos produtos irregulares e lavra o procedimento cabível."
+        "O lojista é notificado sobre a apreensão e as consequências legais da venda de mercadorias falsificadas ou sem comprovação fiscal."
     else:
-
-        "Apesar de alguns indícios encontrados, não há evidências suficientes para justificar a apreensão dos produtos."
-        
-        "A equipe de fiscalização orienta o lojista sobre a importância da conformidade com as leis e regulamentos e recomenda que ele regularize a situação dos produtos vendidos."
+        "Os indícios reunidos são limitados para uma medida mais ampla no momento."
+        "A equipe orienta o responsável sobre a necessidade de regularizar a procedência, a documentação fiscal e os padrões de conformidade."
 
     jump fim_operacao
 
+
 label fim_operacao:
 
+    stop music fadeout 1.0
     scene bg_office
+    with dissolve
 
-    "Após a operação de fiscalização, você retorna ao escritório da Receita Federal para relatar os resultados da inspeção."
+    $ tributos_estimados = indicios_encontrados * 15000
+
+    "De volta ao escritório, a equipe fecha o relatório da ação no Centro de Fortaleza."
 
     if indicios_encontrados >= 2:
+        
+        a "Mandou bem, Beatriz. Consolidamos [indicios_encontrados] indícios técnicos e encaminhamos a apreensão dos itens irregulares."
 
-        "A equipe de fiscalização elogia seu trabalho e destaca a importância da sua contribuição para garantir a conformidade com as leis e regulamentos."
+        show beatriz at right
+        with dissolve
+        e "Dá pra ver como a falta de nota, a ausência de certificação e o descaminho afetam tanto quem compra quanto os cofres públicos."
 
-        "O relatório da operação é enviado às autoridades competentes para que sejam tomadas as medidas legais cabíveis contra o lojista."
-
+        
+        a "Exato. Uma estimativa ilustrativa de R$ [tributos_estimados] em impactos tributários e de conformidade mostra por que isso importa: tributos bem arrecadados financiam saúde, educação e serviços essenciais."
+        a "E coibir irregularidades protege o comércio regular e evita riscos de acidentes com eletrônicos sem certificação."
     else:
+        
+        a "Registramos a vistoria, Beatriz, mas ainda faltou aprofundar a checagem técnica para um encaminhamento mais firme."
 
-        "A equipe de fiscalização agradece sua participação na operação e reforça a importância de continuar monitorando o comércio local para garantir a conformidade com as leis e regulamentos."
-    
+        show beatriz at right
+        with dissolve
+        e "Fica a lição de olhar cada detalhe antes de concluir."
+
+        
+        a "Com certeza. Cidadania fiscal começa ao cobrar nota, conferir a origem do que se compra e entender o destino dos recursos públicos."
+
+    hide beatriz
+    with dissolve
+
+    scene bg_office
+    with dissolve
+
+    "--- RESUMO DO CASO: OPERAÇÃO NO CENTRO DE FORTALEZA ---"
+    "Indícios técnicos verificados: [indicios_encontrados] de 3"
+    "Provas registradas: [provas_apreendidas] | Consciência e engajamento fiscal: [consciencia_publico]"
+
+    "Reflexão: Exigir nota fiscal, checar procedência e combater a irregularidade ajudam a manter a concorrência justa e a financiar os serviços públicos."
+
+
     return
