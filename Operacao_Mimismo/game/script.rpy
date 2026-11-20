@@ -3,7 +3,7 @@
 # ESTAGIÁRIA
 define e = Character("Beatriz", color="#2b5b84")
 # CIVIL
-define c = Character("Civil", color="#10a562")
+define c = Character("Cívil", color="#10a562")
 # DEPARTAMENTO DA RECEITA FEDERAL
 define f = Character("Dep. de Justiça Fiscal", color="#130c9e")
 # ANALISTA
@@ -171,10 +171,6 @@ label ConversaLojista:
 
     jump inspecionarProduto
 
-
-# ==============================================================================
-# LABEL: INSPEÇÃO TÉCNICA DE FALSIFICAÇÃO E DESCAMINHO
-# ==============================================================================
 label inspecionarProduto:
 
     scene bg_store3
