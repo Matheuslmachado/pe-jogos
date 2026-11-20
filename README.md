@@ -1,179 +1,135 @@
-# 🎮 Operação Fiscal: O Mistério da Nota (Caso 1: Operação Mimetismo - O Desafio do Centro)
+# 🎮 Operação Fiscal: O Mistério da Nota 
 
-> **Projeto de Extensão Universitária**  
-> **Disciplina:** Tecnologia e Desenvolvimento de Jogos Digitais (Semestre 2026.2)  
-> **Articulação Extensionista:** NAF Unichristus & Receita Federal do Brasil  
-> **Público-Alvo Prioritário:** Estudantes do Ensino Médio (14 a 18 anos)  
-> **Equipe de Desenvolvimento:** Matheus — *Investigação Nota Limpa*  
+> **Projeto de Extensão**  
+> **Disciplina:** Tecnologia e Desenvolvimento de Jogos Digitais (Semestre 2026.2)   
+> **Público-Alvo:** Adolecentes e Jovens (14 a 18 anos)  
+> **Equipe:** Matheus 
 
 ---
 
 ## 📌 Sumário
-- [1. Visão Geral e Propósito](#1-visão-geral-e-propósito)
-- [2. Contexto do Caso Real (Operação Mimetismo)](#2-contexto-do-caso-real-operação-mimetismo)
-- [3. Ficha Técnica do Jogo](#3-ficha-técnica-do-jogo)
-- [4. Problema Educativo e Objetivos de Aprendizagem](#4-problema-educativo-e-objetivos-de-aprendizagem)
-- [5. Core Gameplay e Mecânicas Principais](#5-core-gameplay-e-mecânicas-principais)
-- [6. Estrutura Técnica e Arquitetura do Código (Ren'Py / Python)](#6-estrutura-técnica-e-arquitetura-do-código-renpy--python)
-- [7. Ficha de Aplicação Extensionista (Atividade NAF)](#7-ficha-de-aplicação-extensionista-atividade-naf)
-- [8. Guia de Instalação e Execução](#8-guia-de-instalação-e-execução)
-- [9. Histórico de Versões e Transparência no Uso de IA](#9-histórico-de-versões-e-transparência-no-uso-de-ia)
+
+* [1. Visão Geral e Contexto Real](#1-visão-geral-e-contexto-real)
+* [2. Ficha Técnica do Protótipo](#2-ficha-técnica-do-protótipo)
+* [3. Problema Educativo e Objetivos Pedagógicos](#3-problema-educativo-e-objetivos-pedagógicos)
+* [4. Core Gameplay e Mecânicas de Perícia](#4-core-gameplay-e-mecânicas-de-perícia)
+* [5. Arquitetura do Código e Variáveis de Progresso (Ren'Py)](#5-arquitetura-do-código-e-variáveis-de-progresso-renpy)
+* [6. Ficha de Aplicação Extensionista (Atividade NAF)](#6-ficha-de-aplicação-extensionista-atividade-naf)
+* [7. Guia de Instalação e Execução](#7-guia-de-instalação-e-execução)
+* [8. Transparência e Uso de IA Generativa](#8-transparência-e-uso-de-ia-generativa)
 
 ---
 
-## 1. Visão Geral e Propósito
+## 1. Visão Geral e Contexto Real
 
-**"Operação Fiscal: O Mistério da Nota"** é um protótipo de jogo digital no formato de **Narrativa Interativa / Visual Novel de Investigação**, desenvolvido com a engine **Ren'Py (baseada em Python)**.
+**"Operação Fiscal: O Mistério da Nota"** é um protótipo de um jogo pedagógico de investigação narrativa desenvolvido para engajar adolecentes e jovens no debate sobre cidadania fiscal, combate ao descaminho e a função social dos tributos.
 
-O projeto tem como propósito transformar conceitos fundamentais de **Educação Fiscal e Cidadania** em uma experiência lúdica, interativa e alinhada ao cotidiano do público jovem. O jogador vivencia o papel de uma estagiária do Núcleo de Apoio Contábil e Fiscal (NAF), atuando junto à Receita Federal na fiscalização e conscientização sobre **sonegação fiscal, descaminho, pirataria e a Função Social dos Tributos**.
+### 🔎 Contexto Real: Operação Mimetismo (Fortaleza/CE)
+O caso jogável é inspirado na operação ostensiva deflagrada pela Receita Federal no **Centro de Fortaleza**, na qual cerca de **R$ 2 milhões em mercadorias irregulares** (eletrônicos sem nota fiscal, artigos contrafeitos e sem certificação) foram apreendidos.
 
----
-
-## 2. Contexto do Caso Real (Operação Mimetismo)
-
-O primeiro caso jogável do protótipo é inspirado na operação real deflagrada pela Receita Federal em **Fortaleza (Ceará)**, na qual cerca de **R$ 2 milhões em produtos irregulares** foram apreendidos em estabelecimentos comerciais no Centro da cidade.
-
-### Tópicos Abordados no Jogo:
+No jogo, o jogador assume o papel de **Beatriz**, estagiária do Núcleo de Apoio Contábil e Fiscal (NAF), atuando ao lado do analista da Receita Federal **Jonas** na fiscalização da loja **Cell Importados**, abordando:
 * **Sonegação e Omissão de Nota Fiscal:** Ausência de recolhimento de ICMS e tributos federais.
-* **Descaminho e Pirataria:** Comercialização de produtos estrangeiros sem comprovação de importação regular.
-* **Concorrência Desleal:** Como o comércio irregular prejudica o empresário formalizado que paga impostos e gera empregos formais.
-* **Saúde e Segurança do Consumidor:** Riscos de eletrônicos e mercadorias sem certificação dos órgãos reguladores.
-* **Destino Social dos Recursos:** Demonstração prática de como a arrecadação financia leitos de UBS, escolas públicas e infraestrutura no Estado.
+* **Descaminho e Contrafação (Falsificação):** Comercialização de produtos estrangeiros sem comprovação de importação regular ou violando propriedade intelectual.
+* **Concorrência Desleal:** Como o comércio irregular prejudica o empresário formalizado que atua dentro da lei.
+* **Segurança e Saúde do Consumidor:** Riscos físicos de eletrônicos sem homologação dos órgãos reguladores (Anatel/Inmetro).
 
 ---
 
-## 3. Ficha Técnica do Jogo
+## 2. Ficha Técnica do Protótipo
 
-| Parâmetro | Detalhe Técnico |
+| Parâmetro | Especificação Técnica |
 | :--- | :--- |
 | **Gênero** | Narrativa Interativa / Visual Novel de Investigação |
-| **Engine / Framework** | Ren'Py 8.x (Scripts em Python / `.rpy`) |
-| **Linguagem Base** | Python / Script Ren'Py |
-| **Plataformas de Saída** | Desktop (Windows, macOS, Linux) e Web (HTML5/WebAssembly) |
-| **Estilo Gráfico** | 2D Ilustrado (Cenários e Sprites de Personagens) |
-| **Escopo do Protótipo (NP2)** | Ciclo completo de 1 Caso Jogável (Briefing, Investigação, Decisão e Consequências) |
+| **Engine & Linguagem** | Ren'Py 8.x (Python Framework / `.rpy`) |
+| **Plataformas Target** | Desktop (Windows, macOS, Linux) e Web (HTML5/WASM) |
+| **Duração Média** | 15 a 20 minutos por sessão jogável |
+| **Escopo da Entrega** | 1 Caso Completo (Denúncia, Briefing, Investigação, Perícia e Desfecho) |
+| **Identidade Visual** | Sprites 2D e cenários urbanos do Centro de Fortaleza |
 
 ---
 
-## 4. Problema Educativo e Objetivos de Aprendizagem
+## 3. Problema Educativo e Objetivos Pedagógicos
 
-### 🔍 O Problema:
-Jovens do Ensino Médio costumam enxergar impostos como fardo burocrático e muitas vezes acham vantajoso aceitar descontos oferecidos por lojas que não emitem nota fiscal. Faltam ferramentas visuais que conectem essa atitude individual às consequências coletivas (falta de verba para saúde e educação).
+### 🔍 O Problema Educacional
+Adolecentes e jovens frequentemente percebem tributos como encargos burocráticos sem retorno visível. O consumo informal ou sem nota fiscal é naturalizado pela falta de percepção sobre os impactos diretos aos recursos que são destinados as áreas da saúde, educação, segurança e serviços públicos da cidade.
 
-### 🎯 Objetivos de Aprendizagem:
-1. Compreender que a **Nota Fiscal** é o instrumento que garante o retorno social dos tributos.
-2. Identificar os prejuízos do **descaminho e da pirataria** para a economia local e empregos formais.
-3. Exercer a **Cidadania Fiscal ativa**, exigindo comprovantes fiscais no consumo diário.
+### 🎯 Objetivos Pedagógicos
+1. Conectar a emissão da **Nota Fiscal** ao financiamento de serviços públicos essenciais (saúde, educação e infraestrutura).
+2. Explicar os riscos econômicos e físicos do **descaminho**, da **falsificação** e da **concorrência desleal**.
+3. Estimular atitudes de **cidadania fiscal ativa** no cotidiano de consumo dos jovens.
 
 ---
 
-## 5. Core Gameplay e Mecânicas Principais
+## 4. Core Gameplay e Mecânicas de Perícia
 
-O jogo utiliza um **Core Loop de Investigação e Tomada de Decisão**:
+A dinâmica alterna entre escuta ativa, diálogo com o comerciante e perícia técnica de produtos:
 
 ```text
-[ Briefing no NAF ] ➔ [ Inspecionar Loja no Centro ] ➔ [ Interrogar Lojista ]
-                                                               │
-                                                               ▼
-[ Resultado & Consequências ] ◄─── [ Confrontar Dados & Provas ]
+[1. Denúncia & Triagem] ➔ [2. Briefing no Escritório] ➔ [3. Abordagem na Cell Importados]
+                                                                        │
+                                                                        ▼
+[5. Desfecho & Resumo Fiscal] ◄────────── [4. Perícia Técnica (3 Critérios)]
 ```
 
-### Indicadores e Variáveis de Controle:
-* `provas_apreendidas`: Registra a quantidade de evidências documentais de sonegação ou irregularidade encontradas.
-* `consciencia_publico`: Mede a capacidade pedagógica e ética da estagiária nas abordagens.
-* `valor_apreensao_milhoes`: Representa o montante econômico irregular interceptado na operação.
+### 🔍 Mecânica de Inspeção Técnica (`menu_inspecao`)
+Antes de lavrar o auto de infração, **Beatriz** precisa examinar os eletrônicos da loja em um loop não-linear, devendo comprovar **pelo menos 2 de 3 indícios técnicos** para sustentar a apreensão legal:
+1. **Selo de Homologação (Anatel / Inmetro):** Verifica certificação e riscos elétricos/segurança ao consumidor.
+2. **Acabamento, Ortografia e Código de Barras:** Identifica sinais de contrafação (falsificação) e violação de propriedade intelectual.
+3. **Nota Fiscal de Entrada / Declaração de Importação:** Comprova a ocorrência de descaminho pela ausência de lastro aduaneiro e tributário.
 
 ---
 
-## 6. Estrutura Técnica e Arquitetura do Código (Ren'Py / Python)
+## 5. Arquitetura do Código e Variáveis de Progresso (Ren'Py)
 
-O código-fonte está estruturado no diretório `/game` com suporte a variáveis globais de estado e desvios condicionais por `menu`.
+O roteiro está estruturado em `game/script.rpy` com controle de estados e desfechos condicionais baseados nas decisões do jogador.
 
-### Exemplo da Estrutura Principal (`game/script.rpy`):
+### 📊 Variáveis de Estado e Métricas
 
-```renpy
-# Declaração dos Personagens
-define e = Character("Sofia (Estagiária)", color="#2b5b84")
-define l = Character("Lojista Investigado", color="#8b4513")
-define m = Character("Mentora NAF / Auditora", color="#1c7430")
+| Variável | Tipo | Impacto no Gameplay e Desfecho |
+| :--- | :--- | :--- |
+| `indicios_encontrados` | `Integer` | Controla a trava da perícia (mínimo 2 indícios) e define entre apreensão formal ou apenas orientação. |
+| `provas_apreendidas` | `Integer` | Acumula provas da denúncia inicial e da vistoria física para o relatório final. |
+| `consciencia_publico` | `Integer` | Pontua escolhas educativas (recebimento de provas, diálogo com o lojista e perícia completa de 3/3 itens). |
+| `tributos_estimados` | `Integer` | Calcula o impacto tributário ilustrativo (`indicios_encontrados * 15000`) exibido no encerramento. |
 
-# Variáveis de Controle
-default provas_apreendidas = 0
-default consciencia_publico = 0
-default valor_apreensao_milhoes = 2
 
-label start:
-    scene bg_office
-    "Outubro de 2026 - Núcleo de Apoio Contábil e Fiscal (NAF) / Unichristus."
-    m "Sofia, a Receita Federal deflagrou a 'Operação Mimetismo' no Centro de Fortaleza!"
-    m "Cerca de R$ [valor_apreensao_milhoes] milhões em produtos sem nota e sem origem foram apreendidos."
-    
-    jump operacao_centro
+## 6. Ficha de Aplicação Extensionista (Atividade NAF)
 
-label operacao_centro:
-    scene bg_store
-    "Você investiga um dos estabelecimentos no Centro de Fortaleza."
-    l "Por que essa fiscalização toda na minha loja?"
+Guia de orientação para estudantes de Ciências Contábeis e Direito do **NAF Unichristus** na condução de oficinas em escolas de Ensino Médio:
 
-    menu:
-        "Explicar sobre Concorrência Desleal e Arrecadação Social":
-            $ consciencia_publico += 1
-            $ provas_apreendidas += 1
-            e "O descaminho e a omissão fiscal tiram recursos de hospitais e prejudicam quem vende na legalidade."
-            jump final_sucesso_operacao
+* **Público Esperado:** Turmas de 1º a 3º ano do Ensino Médio (30 a 45 alunos por sessão).
+* **Duração Total:** 45 minutos (15 min de partida interativa + 30 min de debate mediado).
+* **Recursos Necessários:** Notebook com o jogo instalado e Datashow/Projetor (**funcionamento 100% offline**).
+* **Dinâmica de Grupo:** Votação coletiva dos alunos em sala de aula para decidir cada escolha da personagem **Beatriz**.
 
-        "Focar apenas em aplicar uma multa rápida sem orientar":
-            jump final_falha_operacao
-```
+### 💬 Roteiro de Debates Pós-Jogo (Perguntas Desencadeadoras)
+1. *"Quando compramos um produto barato e sem nota fiscal no Centro, quem é beneficiado e quem sai prejudicado no final?"*
+2. *"Como a apreensão de R$ 2 milhões em mercadorias ilegais na Operação Mimetismo afeta os postos de saúde e escolas de Fortaleza?"*
+3. *"Qual é o nosso papel como consumidores para evitar a concorrência desleal na nossa cidade?"*
 
 ---
 
-## 7. Ficha de Aplicação Extensionista (Atividade NAF)
+## 7. Guia de Instalação e Execução
 
-Ficha técnica para orientação de mediadores do NAF da Unichristus durante oficinas e palestras nas escolas de Ensino Médio:
+### Jogadores:
+1. Baixe a versão compilada na aba **Releases** deste repositório.
+2. Extraia o conteúdo do arquivo `.zip`.
+3. Execute o arquivo `Operacao_Memitismo.exe` (Windows) ou o executável correspondente ao seu sistema operacional.
 
-* **Público Esperado:** Estudantes do 1º ao 3º ano do Ensino Médio (14 a 18 anos).
-* **Duração Recomendada:** 45 minutos (15 min de gameplay interativo + 30 min de roda de conversa).
-* **Infraestrutura Necessária:** Computador/Notebook com projetor (Datashow) ou Laboratório de Informática. **Não exige conexão com a internet após o download.**
-* **Modo de Aplicação:** O mediador do NAF pode projetar o jogo e permitir que a turma vote nas opções dos menus de escolha, promovendo debate em tempo real.
-
-### ❓ Questões para Debate Pós-Jogo:
-1. *"Quando compramos um eletrônico barato sem nota no Centro, quem realmente ganha e quem perde no final?"*
-2. *"Como a apreensão de R$ 2 milhões em mercadorias irregulares impacta a vida de quem precisa de posto de saúde e escola pública em Fortaleza?"*
-3. *"O que podemos fazer no nosso dia a dia para combater a concorrência desleal e ajudar a cidade?"*
-
----
-
-## 8. Guia de Instalação e Execução
-
-### Para Jogadores / Mediadores:
-1. Faça o download da versão compilada na aba [Releases](../../releases).
-2. Extraia o arquivo ZIP.
-3. Execute o arquivo `Operacao_Nota_Limpa.exe` (Windows) ou o executável correspondente ao seu sistema operacional.
-
-### Para Desenvolvedores (Editar o Projeto):
-1. Faça o download do [Ren'Py SDK 8.x](https://www.renpy.org/).
-2. Clone este repositório para a sua máquina:
+### Para Desenvolvedores (Editar no Ren'Py):
+1. Instale o [Ren'Py SDK 8.x](https://www.renpy.org/).
+2. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/matheus-educajogo-fiscal.git
+   git clone https://github.com/seu-usuario/operacao-fiscal-misterio-da-nota.git
    ```
-3. Abra o Launcher do Ren'Py e selecione a pasta do projeto para testar ou compilar (`Build Distributions`).
+3. Abra o **Ren'Py Launcher**, selecione a pasta do projeto e clique em **Launch Project**.
 
 ---
 
-## 9. Histórico de Versões e Transparência no Uso de IA
+## 8. Transparência e Uso de IA Generativa
 
-* **v1.0.0 (NP2 Final):**
-  * Implementação completa do Caso 1 (Operação Mimetismo - Centro de Fortaleza).
-  * Interface visual ajustada com fundos e sprites de personagens.
-  * Integração das variáveis de estado (`provas_apreendidas`, `consciencia_publico`).
-  * Inclusão do GDD e Ficha Extensionista no repositório.
+Em atendimento aos critérios do edital do projeto de extensão (Item 10):
+* **Auxílio no Código:** Estruturação da sintaxe de desvios condicionais, loops de inspeção (`menu_inspecao`) e variáveis globais em Ren'Py/Python.
+* **Ideação e Codificação:** Apoio na organização do escopo e alinhamento do tema às diretrizes extensionistas do NAF e da Receita Federal.
+* **Validação Pedagógica:** Adaptação da linguagem técnica contábil e aduaneira (*descaminho*, *contrafação*, *ICMS* e *homologação Anatel/Inmetro*) para o público do Ensino Médio.
 
-### Uso de Inteligência Artificial Generativa (Conforme Item 10 do Edital):
-* **Ideação e Codificação:** Apoio na estruturação da sintaxe de scripts Ren'Py e verificação de lógica condicional.
-* **Geração de Imagens/Assets:** Criação e adaptação de planos de fundo conceituais e avatares de personagens para o protótipo.
-* **Revisão Pedagógica:** Validação da adequação da linguagem técnica contábil/fiscal para o público do Ensino Médio.
-
----
-
-> **EducaJogo Fiscal 2026.2** — *Promovendo a cidadania e a educação fiscal de forma lúdica.*
